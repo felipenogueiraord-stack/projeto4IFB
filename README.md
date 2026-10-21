@@ -96,14 +96,14 @@ curl.exe http://127.0.0.1:8000/api/filmes/1/
 ```cmd
 curl.exe -X POST http://127.0.0.1:8000/api/token/ ^
   -H "Content-Type: application/json" ^
-  -d "{\"username\":\"SEU_USUARIO\",\"password\":\"SUA_SENHA\"}"
+  -d "{\"username\":\"FelipeGon1\",\"password\":\"Senha0309\"}"
 ```
 
 **Resposta esperada:**
 
 ```json
 {
-  "token": "TOKEN_GERADO"
+  "token": "a7f2be97e7d86f89a345c6583321f20522b1ee57"
 }
 ```
 
