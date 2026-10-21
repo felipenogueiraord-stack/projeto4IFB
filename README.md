@@ -27,7 +27,7 @@ Projeto desenvolvido com Django REST Framework para cadastrar, consultar, editar
 
 ## Testes realizados
 
-Os testes foram realizados utilizando o `curl.exe` no terminal do Windows.
+Os testes foram realizados utilizando o `curl.exe` no terminal cmd do VsCode
 
 ### 1. Listagem de filmes
 
