@@ -1,13 +1,6 @@
 # Projeto 4 - API de Filmes
 
-Este projeto foi desenvolvido com Django REST Framework e tem como objetivo criar uma API para cadastrar e consultar filmes e gêneros.
-
-## Funcionalidades
-
-- Cadastro, consulta, edição e exclusão de filmes.
-- Cadastro e consulta de gêneros.
-- Filtro de filmes por título, ano de lançamento e gênero.
-- Autenticação e permissões de acesso à API.
+Projeto desenvolvido com Django REST Framework para cadastrar, consultar, editar e excluir filmes e gêneros.
 
 ## Tecnologias utilizadas
 
@@ -17,13 +10,115 @@ Este projeto foi desenvolvido com Django REST Framework e tem como objetivo cria
 - django-filter
 - SQLite
 
-## Como executar
+## Endpoints
 
-1. Instale as dependências do projeto.
-2. Execute as migrações do banco de dados.
-3. Inicie o servidor Django.
+| Método | Endpoint | Descrição |
+|---|---|---|
+| GET | `/api/filmes/` | Lista os filmes |
+| GET | `/api/filmes/{id}/` | Consulta um filme específico |
+| POST | `/api/filmes/` | Cadastra um filme |
+| PUT | `/api/filmes/{id}/` | Atualiza um filme |
+| PATCH | `/api/filmes/{id}/` | Atualiza parte dos dados de um filme |
+| DELETE | `/api/filmes/{id}/` | Exclui um filme |
+| GET | `/api/generos/` | Lista os gêneros |
+| POST | `/api/generos/` | Cadastra um gênero |
+| GET | `/api/generos/{id}/` | Consulta um gênero específico |
+| POST | `/api/token/` | Gera um token de autenticação |
 
-A API ficará disponível localmente em `http://127.0.0.1:8000/api/`.
+## Testes realizados
+
+Os testes foram realizados utilizando o `curl.exe` no terminal do Windows.
+
+### 1. Listagem de filmes
+
+**Requisição:**
+
+```cmd
+curl.exe http://127.0.0.1:8000/api/filmes/
+```
+
+**Resultado obtido:**
+
+```json
+[
+  {
+    "id": 1,
+    "titulo": "Interestelar",
+    "descricao": "Filme do Cristopher Nolan",
+    "ano_lancamento": 2014,
+    "duracao": 160,
+    "genero": 1
+  },
+  {
+    "id": 2,
+    "titulo": "O dia em que a terra parou",
+    "descricao": "Filme estrelado por Keanu Reeves",
+    "ano_lancamento": 2011,
+    "duracao": 155,
+    "genero": 1
+  },
+  {
+    "id": 3,
+    "titulo": "Indiana Jones and the lost Ark",
+    "descricao": "Primeiro filme de Harrison Ford como indiana Jones",
+    "ano_lancamento": 1989,
+    "duracao": 175,
+    "genero": 2
+  }
+]
+```
+
+### 2. Consulta de um filme específico
+
+**Requisição:**
+
+```cmd
+curl.exe http://127.0.0.1:8000/api/filmes/1/
+```
+
+**Resultado obtido:**
+
+```json
+{
+  "id": 1,
+  "titulo": "Interestelar",
+  "descricao": "Filme do Cristopher Nolan",
+  "ano_lancamento": 2014,
+  "duracao": 160,
+  "genero": 1
+}
+```
+
+### 3. Geração de token de autenticação
+
+**Requisição:**
+
+```cmd
+curl.exe -X POST http://127.0.0.1:8000/api/token/ ^
+  -H "Content-Type: application/json" ^
+  -d "{\"username\":\"SEU_USUARIO\",\"password\":\"SUA_SENHA\"}"
+```
+
+**Resposta esperada:**
+
+```json
+{
+  "token": "TOKEN_GERADO"
+}
+```
+
+O token é gerado a partir das credenciais de um usuário cadastrado. O valor retornado deve ser tratado como informação privada.
+
+## Como executar o projeto
+
+1. Ative o ambiente virtual.
+2. Instale as dependências listadas no `requirements.txt`.
+3. Execute as migrações do banco de dados.
+4. Inicie o servidor Django.
+
+A API estará disponível localmente em:
+
+`http://127.0.0.1:8000/api/`
 
 ## Autor
 
